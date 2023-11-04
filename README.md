@@ -8,3 +8,8 @@ Todo:
 - Backend:
   - Database
   - Search algorithm
+
+
+Future:
+  - GPS location verification
+  - Photo verification
