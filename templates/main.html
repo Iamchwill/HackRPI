@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps API Example</title>
+    <!-- Include the Google Maps JavaScript API with your API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPnc86YZK6BeSye2JI5Gdy_B0VM8ZfXRQ"></script>
+    <script src="{{ url_for('static', filename='map.js')}}"> </sciprt>
+    <link rel='stylesheet' src="{{ url_for('static', filename='styles.css')}}"> </link>
+    <style>
+        /* Add CSS styles for the map container */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Google Map</h1>
+    <!-- Create a div to hold the map -->
+    <div id="map"></div>
+
+    <script>
+        // Initialize the map
+        function initMap() {
+            // Set the coordinates for the map center
+            var mapCenter = { lat: 37.7749, lng: -122.4194 }; // Example: San Francisco, CA
+
+            // Create a new map instance and set its properties
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: mapCenter,
+                zoom: 10 // Adjust the zoom level as needed
+            });
+
+            // Add a marker to the map
+            var marker = new google.maps.Marker({
+                position: mapCenter,
+                map: map,
+                title: 'My Marker' // You can customize the title
+            });
+        }
+    </script>
+
+    <!-- Call the initMap function when the API script has loaded -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPnc86YZK6BeSye2JI5Gdy_B0VM8ZfXRQ&callback=initMap">
+    </script>
+</body>
+</html>
