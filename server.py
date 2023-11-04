@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from pymongo.mongo_client import MongoClient
 
 import database
@@ -7,11 +7,13 @@ import database
 uri = "mongodb+srv://chuw7:psGav2DdUOZXuWYE@toilet.mnkp0e1.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='',
+            static_folder='static',
+            template_folder='templates')
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return render_template('main.html')
 
 if __name__ == "__main__":
     try:
