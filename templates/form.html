@@ -5,35 +5,22 @@
 </head>
 <body>
     <div class="row">
-        <div class ="col-sm-8">
-            <form action="/action_add">
+        <div class="col-sm-8">
+            <form action="/action_add" method="POST">
                 <div class="form-group">
-                <label for="locat">Location:</label>
-                <input type="locat" class="form-control" id="locat">
+                    <label for="locat">Location:</label>
+                    <input type="text" class="form-control" id="locat" name="location">
                 </div>
                 <div class="form-group">
-                <label for="qual">Quality:</label>
-                <input type="qual" class="form-control" id="qual" >
+                    <label for="qual">Quality:</label>
+                    <input type="text" class="form-control" id="qual" name="quality">
                 </div>
-                <div class="form-group">
-                    <label for="sink">Sink:</label>
-                    <input type="sink" class="form-control" id="sink">
-                </div>
-                <div class="form-group">
-                    <label for="toilets">Toilets:</label>
-                    <input type="toilets" class="form-control" id="toilets">
-                </div>
-                <div class="form-group">
-                    <label for="soap">Soap:</label>
-                    <input type="soap" class="form-control" id="soap">
-                </div>
-                <div class="form-group">
-                    <label for="dryer">Dryer:</label>
-                    <input type="dryer" class="form-control" id="dryer">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="sink"> Sink? </label>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
-      </div>
+    </div>
 </body>
 </html>
