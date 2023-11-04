@@ -4,8 +4,8 @@
     <title>Google Maps API Example</title>
     <!-- Include the Google Maps JavaScript API with your API key -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPnc86YZK6BeSye2JI5Gdy_B0VM8ZfXRQ"></script>
-    <script src='map.js'> </sciprt>
-    <link rel='stylesheet' href='styles.css'> </link>
+    <script src="{{ url_for('static', filename='map.js')}}"> </sciprt>
+    <link rel='stylesheet' src="{{ url_for('static', filename='styles.css')}}"> </link>
     <style>
         /* Add CSS styles for the map container */
         #map {
