@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Map</title>
-
-  <!-- Include Leaflet CSS and JavaScript -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  
-  <!-- Define the map's CSS styles -->
-  <style>
-    #map {
-      height: 400px;
-    }
-  </style>
+    <title>Google Maps API Example</title>
+    <!-- Include the Google Maps JavaScript API with your API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPnc86YZK6BeSye2JI5Gdy_B0VM8ZfXRQ"></script>
+    <style>
+        /* Add CSS styles for the map container */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+    <h1>My Google Map</h1>
+    <!-- Create a div to hold the map -->
+    <div id="map"></div>
 
-<!-- Create a div element for the map -->
-<div id="map"></div>
+    <script>
+        // Initialize the map
+        function initMap() {
+            // Set the coordinates for the map center
+            var mapCenter = { lat: 37.7749, lng: -122.4194 }; // Example: San Francisco, CA
 
-<script>
-  // Initialize the map and set its view to a specific location and zoom level
-  var map = L.map('map').setView([51.505, -0.09], 13);
+            // Create a new map instance and set its properties
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: mapCenter,
+                zoom: 10 // Adjust the zoom level as needed
+            });
 
-  // Add OpenStreetMap tiles as a basemap
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+            // Add a marker to the map
+            var marker = new google.maps.Marker({
+                position: mapCenter,
+                map: map,
+                title: 'My Marker' // You can customize the title
+            });
+        }
+    </script>
 
-  // You can add markers, polygons, or other layers to the map here.
-
-</script>
+    <!-- Call the initMap function when the API script has loaded -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPnc86YZK6BeSye2JI5Gdy_B0VM8ZfXRQ&callback=initMap">
+    </script>
 </body>
 </html>
