@@ -216,6 +216,15 @@
                     marker.addTo(map);
                 }
                 
+                if ("geolocation" in navigator) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        let marker = new L.CircleMarker([lat, lon])
+                        marker.addTo(map)
+                    })
+                }
+                
             } catch(error) {
                 console.error(`Download error: ${error.message}`);
             }
