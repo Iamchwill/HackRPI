@@ -14,12 +14,12 @@ app = Flask(__name__, static_url_path='',
             static_folder='static',
             template_folder='templates')
 
-@app.route('/formb')
-def formb():
+@app.route('/review_form.html')
+def review_form():
     return render_template('review_form.html')
 
-@app.route('/forma')
-def forma():
+@app.route('/form.html')
+def form():
     return render_template('form.html')
 @app.route('/action_add', methods=['POST'])
 def action_add():
