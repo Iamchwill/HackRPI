@@ -1,6 +1,19 @@
 import route
 import math
 
+
+def insert_blank_toilet(collection, location, genders, facilities):
+    new_toilet = {
+        'location': location,
+        'quality': 0.0,
+        'reviews': 0,
+        'genders': genders,
+        'toilet': facilities[0],
+        'urinal': facilities[1],
+        'sink': facilities[2],
+    }
+    collection.insert_one(new_toilet)
+
 def insert_toilet(collection, location, quality, genders, facilities):
     new_toilet = {
         'location': location,
@@ -35,12 +48,11 @@ def add_review(collection, tid, quality):
 
 
 def find_closest_toilet(collection, location):
-    min_length = inf
+    min_length = math.inf
     min_route = []
-    for document in collection:
-        coords = {document['location'][0], document['location'][1]}
-        r = route.fastest_route({location[0],location[1]}, coords)
-        r_length = route.route_length(r)
+    for document in collection.find({}):
+        coords = (float(document['location'][0]), float(document['location'][1]))
+        r, r_length = route.fastest_route((location[0],location[1]), coords)
         print(r_length)
         
         if r_length < min_length:
@@ -48,5 +60,16 @@ def find_closest_toilet(collection, location):
             min_route = r
 
     return min_route
+
+def read_locations(coll):
+    f=open("data.txt", "r")
+    for line in f:
+        l = line[:-1].split(",")
+        insert_blank_toilet(
+            coll,
+            l,
+            ['null', 'null', 'null'],
+            ['null', 'null', 'null'],
+        )
 
 

@@ -26,7 +26,7 @@ def review_form():
 @app.route('/form.html')
 def form():
     return render_template('form.html')
-    
+
 @app.route('/action_add', methods=['POST'])
 def action_add():
     facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink")]
@@ -67,5 +67,8 @@ if __name__ == "__main__":
         print("Pinged your deployment. You successfully connected to MongoDB!")
     except Exception as e:
         print(e)
+        
+    print(database.find_closest_toilet(coll, [40.8, -74]))
+    #database.read_locations(coll)
 
     app.run(debug=True)
