@@ -2,7 +2,7 @@
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -56,26 +56,6 @@
         </div>
     </div>
 
-    <script>
-        // Function to update the location input with the current location
-        function updateLocationWithCurrentLocation() {
-            if ("geolocation" in navigator) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    const locationInput = document.getElementById("locat");
-                    locationInput.value = `${latitude}, ${longitude}`;
-                }, function (error) {
-                    console.error("Error getting current location:", error);
-                });
-            } else {
-                console.error("Geolocation not supported by the browser.");
-            }
-        }
-
-        // Add a click event listener to the "Use Current Location" button
-        const useCurrentLocationButton = document.getElementById("useCurrentLocation");
-        useCurrentLocationButton.addEventListener("click", updateLocationWithCurrentLocation);
-    </script>
+    <script src="../script.js"></script>
 </body>
 </html>
