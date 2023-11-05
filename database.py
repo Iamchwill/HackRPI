@@ -68,8 +68,12 @@ def read_locations(coll):
         insert_blank_toilet(
             coll,
             l,
-            ['null', 'null', 'null'],
-            ['null', 'null', 'null'],
+            ['True', 'True', 'null'],
+            ['2', '2', 'sink'],
         )
+
+def get_id_from_location(coll, locat):
+    t = collection.find_one({'location': locat})
+    return t['toiletid']
 
 

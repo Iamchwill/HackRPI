@@ -52,8 +52,7 @@ def action_add():
         return redirect('/')
     if len(splicedlocation) != 2 or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[0]) == None or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[1]) == None:
         return redirect('/')
-    
-    print("good input")
+
     #database.insert_toilet(
     #    coll,
     #    locat,
@@ -61,14 +60,13 @@ def action_add():
     #    [men, women, unisex],
     #    facilities,
     #)
-
     
     return redirect('/')
 
-@app.route('/action_route', methods=['POST'])
-def action_route():
+@app.route('/action_review', methods=['POST'])
+def action_review():
     tid = request.form.get("tid")
-    qual = request.form.get("quality")
+    qual = int(request.form.get("quality"))
 
     database.add_review(coll, tid, qual)
     return redirect('/')
