@@ -57,5 +57,7 @@ function validateReview() {
 }
 
 // Add a click event listener to the "Use Current Location" button
-const useCurrentLocationButton = document.getElementById("useCurrentLocation");
-useCurrentLocationButton.addEventListener("click", getCurrentLocation);
+document.addEventListener("DOMContentLoaded", function() {
+    const useCurrentLocationButton = document.getElementById("useCurrentLocation");
+    useCurrentLocationButton.addEventListener("click", getCurrentLocation);
+});
