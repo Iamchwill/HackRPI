@@ -74,7 +74,7 @@ def action_add():
     qual = int(qual)
     database.insert_toilet(
         coll,
-        locat,
+        splicedlocation,
         qual,
         [men, women, unisex],
         facilities,
