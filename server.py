@@ -38,6 +38,8 @@ def action_add():
     #     facilities,
     # )
 
+    print(men)
+
     if int(facilities[0]) < 0 or int(facilities[1]) < 0:
 	    return redirect('/')
     return redirect('/')
