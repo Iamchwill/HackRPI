@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template, redirect, request
 from pymongo.mongo_client import MongoClient
 from bson.json_util import dumps
+import re
 
 import database
 
@@ -35,17 +36,33 @@ def action_add():
     men = request.form.get("men")
     women = request.form.get("women")
     unisex = request.form.get("uni")
-
-    database.insert_toilet(
-        coll,
-        locat,
-        qual,
-        [men, women, unisex],
-        facilities,
-    )
-
-    if int(facilities[0]) < 0 or int(facilities[1]) < 0:
+    splicedlocation = locat.split(", ")
+    if not facilities[0].isnumeric() or not facilities[1].isnumeric() or int(facilities[0]) < 0 or int(facilities[1]) < 0:
 	    return redirect('/')
+    print(facilities[2])
+    if facilities[2] != "True" and facilities[2] != None:
+        return redirect('/')
+    if not qual.isnumeric() or int(qual) < 0 or int(qual) > 5:
+        return redirect('/')
+    if men != "True" and men != None:
+        return redirect('/')
+    if women != "True" and women != None:
+        return redirect('/')
+    if unisex != "True" and unisex != None:
+        return redirect('/')
+    if len(splicedlocation) != 2 or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[0]) == None or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[1]) == None:
+        return redirect('/')
+    
+    print("good input")
+    #database.insert_toilet(
+    #    coll,
+    #    locat,
+    #    qual,
+    #    [men, women, unisex],
+    #    facilities,
+    #)
+
+    
     return redirect('/')
 
 @app.route('/action_route', methods=['POST'])
