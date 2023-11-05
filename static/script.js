@@ -23,7 +23,7 @@ function validateForm() {
     }
 
     var quality = document.getElementById("qual");
-    if (quality.value === "") {
+    if (quality.value == "") {
         alert("Value is required.");
         quality.focus();
         return false;
