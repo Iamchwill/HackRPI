@@ -11,12 +11,25 @@ app = Flask(__name__, static_url_path='',
             static_folder='static',
             template_folder='templates')
 
+@app.route('/formb')
+def formb():
+    return render_template('review_form.html')
+
+@app.route('/forma')
+def forma():
+    return render_template('form.html')
 @app.route('/action_add', methods=['POST'])
 def action_add():
     facilities = [request.form.get(toilet), request.form.get(urinal), request.form.get(sink), request.form.get(soap)]
     locat = request.form.get(locat)
+    qual = request.form.get(qual)
+    unisex = request.form.get(uni)
+    men = request.form.get(men)
+    woman = request.fomr.get(women)
     if facilities[0] < 0 or facilities[1] < 0:
 	    return redirect('/')
+    return redirect('/')
+
 
 @app.route('/')
 def hello_world():
