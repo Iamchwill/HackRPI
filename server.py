@@ -27,7 +27,18 @@ def review_form():
 @app.route('/form.html')
 def form():
     return render_template('form.html')
-
+@app.route('/action_review', methods=['POST'])
+def action_review():
+    locat = request.form.get("location")
+    splicedlocation = locat.split(", ")
+    qual = request.form.get("quality")
+    if not qual.isnumeric() or int(qual) < 0 or int(qual) > 5:
+        return redirect('/')
+    if len(splicedlocation) != 2 or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[0]) == None or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[1]) == None:
+        return redirect('/')
+    qual = int(qual)
+    database.add_review(coll, splicedlocation, qual)
+    return redirect('/')
 @app.route('/action_add', methods=['POST'])
 def action_add():
     facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink")]
@@ -52,14 +63,34 @@ def action_add():
         return redirect('/')
     if len(splicedlocation) != 2 or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[0]) == None or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[1]) == None:
         return redirect('/')
+    
+    if men == None:
+        men = False
+    else:
+        men = True
+    if women == None:
+        women = False
+    else:
+        women = True
+    if unisex == None:
+        unisex = False
+    else:
+        unisex = True
+    if facilities[2] == None:
+        facilities[2] = False
+    else:
+        facilities[2] = True
+    facilities[0] = int(facilities[0])
+    facilities[1] = int(facilities[1])
+    qual = int(qual)
+    database.insert_toilet(
+        coll,
+        splicedlocation,
+        qual,
+        [men, women, unisex],
+        facilities,
+    )
 
-    #database.insert_toilet(
-    #    coll,
-    #    locat,
-    #    qual,
-    #    [men, women, unisex],
-    #    facilities,
-    #)
     
     return redirect('/')
 
