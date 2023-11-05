@@ -56,16 +56,46 @@
 </div>
 
 <script>
-// Initialize the map and set its view to a specific location and zoom level
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map');
 
-// Add OpenStreetMap tiles as a basemap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+// Function to initialize the map with user location or default coordinates
+function initializeMapWithUserLocation() {
+  if ("geolocation" in navigator) {
+    // Request user's location
+    navigator.geolocation.getCurrentPosition(function (position) {
+      // User's location is available
+      var userLatitude = position.coords.latitude;
+      var userLongitude = position.coords.longitude;
 
-// You can add markers, polygons, or other layers to the map here.
+      // Set the map view to the user's coordinates
+      map.setView([userLatitude, userLongitude], 13);
+
+      // Add OpenStreetMap tiles as a basemap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    }, function (error) {
+      // User denied or failed to provide location; display an atoll island
+      setDefaultMap();
+    });
+  } else {
+    // Geolocation not supported; display an atoll island
+    setDefaultMap();
+  }
+}
+
+// Function to set the map to default coordinates (Atoll Island)
+function setDefaultMap() {
+  map.setView([0, 0], 2); // Set to Atoll Island or any other default location
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+}
+
+// Call the function to initialize the map based on user location or default
+initializeMapWithUserLocation();
 </script>
 
 </body>
