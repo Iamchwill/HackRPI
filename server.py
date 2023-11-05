@@ -39,7 +39,7 @@ def action_add():
     database.insert_toilet(
         coll,
         locat,
-        quality,
+        qual,
         [men, women, unisex],
         facilities,
     )
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(e)
         
-    print(database.find_closest_toilet(coll, [40.8, -74]))
+    #print(database.find_closest_toilet(coll, [40.8, -74]))
     #database.read_locations(coll)
 
     app.run(debug=True)
