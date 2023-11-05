@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from pymongo.mongo_client import MongoClient
 
 import database
@@ -20,13 +20,13 @@ def forma():
     return render_template('form.html')
 @app.route('/action_add', methods=['POST'])
 def action_add():
-    facilities = [request.form.get(toilet), request.form.get(urinal), request.form.get(sink), request.form.get(soap)]
-    locat = request.form.get(locat)
-    qual = request.form.get(qual)
-    unisex = request.form.get(uni)
-    men = request.form.get(men)
-    woman = request.fomr.get(women)
-    if facilities[0] < 0 or facilities[1] < 0:
+    facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink"), request.form.get("soap")]
+    locat = request.form.get("locat")
+    qual = request.form.get("qual")
+    unisex = request.form.get("uni")
+    men = request.form.get("men")
+    woman = request.form.get("women")
+    if int(facilities[0]) < 0 or int(facilities[1]) < 0:
 	    return redirect('/')
     return redirect('/')
 
