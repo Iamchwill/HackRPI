@@ -1,7 +1,5 @@
-// script.js
-
 // Function to update the location input with the current location
-function updateLocationWithCurrentLocation() {
+function getCurrentLocation() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = position.coords.latitude;
@@ -18,4 +16,4 @@ function updateLocationWithCurrentLocation() {
 
 // Add a click event listener to the "Use Current Location" button
 const useCurrentLocationButton = document.getElementById("useCurrentLocation");
-useCurrentLocationButton.addEventListener("click", updateLocationWithCurrentLocation);
+useCurrentLocationButton.addEventListener("click", getCurrentLocation);

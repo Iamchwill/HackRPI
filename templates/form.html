@@ -10,7 +10,7 @@
             <div class="col-md-6 mx-auto">
                 <div class="form-container">
                     <h2 class="mb-4">Submit Location Information</h2>
-                    <form action="/action_add" method="POST">
+                    <form action="/action_add" method="POST" onsubmit="return validateForm()">
                         <div class="form-group">
                             <label for="locat">Location:</label>
                             <div class="input-group">
@@ -60,5 +60,23 @@
     </div>
 
     <script src="../script.js"></script>
-</body>
+    <script>
+        function validateForm() {
+            var locationInput = document.getElementById("locat");
+            if (locationInput.value.trim() === "") {
+                alert("Location is required.");
+                locationInput.focus();
+                return false;
+            }
+
+            var quality = document.getElementById("qual");
+            if (quality.value === null) {
+                alert("Value is required.");
+                quality.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+    </body>
 </html>
