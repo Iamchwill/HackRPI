@@ -27,11 +27,22 @@
                             <label for="qual">Urinal Count:</label>
                             <input type="number" class="form-control" id="urinals" name="urinals" placeholder="Urinal Count" min="1" max="100">
                         </div>
-                        <div class="form-group">
-                            <label for="sink">Sink / Soap: </label>
+                        <div class="form-check form-check-inline">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="sink-yes" name="sink" value="sink">
+                                <input type="checkbox" class="form-check-input" id="sink" name="sink" value="sink">
                                 <label class="form-check-label" for="sink">Sink Available?</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="men" value="men">
+                                <label class="form-check-label" for="inlineCheckbox1">Men's</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="women" value="women">
+                                <label class="form-check-label" for="inlineCheckbox2">Women's</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="uni" value="uni">
+                                <label class="form-check-label" for="inlineCheckbox3">Unisex</label>
                             </div>
                         </div>
                     </form>
