@@ -196,8 +196,34 @@
             }).addTo(map);
         }
 
+        var toilets = []
+        async function showLocations() {
+            try {
+                const response = await fetch("/locations")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        for(const toilet of data) {
+                            toilets.push(toilet)
+                            console.log(toilet)
+                        }
+                    })
+                
+                console.log(toilets)
+                for(var i = 0; i < toilets.length; i++) {
+                    var toilet = toilets[i]
+                    var locat = [parseFloat(toilet.location[0]), parseFloat(toilet.location[1])]
+                    let marker = new L.Marker(locat);
+                    marker.addTo(map);
+                }
+                
+            } catch(error) {
+                console.error(`Download error: ${error.message}`);
+            }
+        }
+
         // Call the function to initialize the map based on user location or default
         initializeMapWithUserLocation();
+        showLocations()
     </script>
     </div>
     </body>
