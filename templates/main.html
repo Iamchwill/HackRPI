@@ -20,7 +20,7 @@
     
     /* Make the map container full height */
     #map {
-      height: 85vh; /* 100% of the viewport height */
+      height: 90vh; /* 100% of the viewport height */
       width: 100%;    /* 100% of the viewport width */
     }
   </style>
@@ -28,9 +28,10 @@
 <body>
 
 <!-- Create a div element for the map and add padding to the left -->
+<div class="container-fluid">
 <div class="row">
     <div class="col-sm-8 pl-4"> <!-- Added the pl-4 class for left padding -->
-        <div id="map"></div>
+        <div id="map">
 
         <script>
         // Initialize the map and set its view to a specific location and zoom level
@@ -44,10 +45,12 @@
 
         // You can add markers, polygons, or other layers to the map here.
         </script>
+        </div>
     </div>
     <div id="button-container" class="pl-4"> <!-- Added the pl-4 class for left padding -->
         <a href="form.html" class="btn btn-primary">Go to Form</a>
     </div>
+</div>
 </div>
 </body>
 </html>
