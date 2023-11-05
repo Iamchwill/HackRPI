@@ -11,3 +11,7 @@ def find_shortest(G, pt1, pt2):
     dest = osmnx.nearest_nodes(G, pt2[0], pt2[1])
     route = osmnx.shortest_path(G, orig, dest, weight="travel_time")
     return route
+
+def route_length(r):
+    edge_lengths = osmnx.utils_graph.get_route_edge_attributes(G, r, 'length')
+    return sum(edge_lengths)

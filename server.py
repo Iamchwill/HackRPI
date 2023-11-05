@@ -7,6 +7,9 @@ import database
 uri = "mongodb+srv://chuw7:psGav2DdUOZXuWYE@toilet.mnkp0e1.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
 
+db = client["Toilets"]
+coll = db["toilets"]
+
 app = Flask(__name__, static_url_path='',
             static_folder='static',
             template_folder='templates')
@@ -20,12 +23,21 @@ def forma():
     return render_template('form.html')
 @app.route('/action_add', methods=['POST'])
 def action_add():
-    facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink"), request.form.get("soap")]
-    locat = request.form.get("locat")
-    qual = request.form.get("qual")
-    unisex = request.form.get("uni")
+    facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink")]
+    locat = request.form.get("location")
+    qual = request.form.get("quality")
     men = request.form.get("men")
-    woman = request.form.get("women")
+    women = request.form.get("women")
+    unisex = request.form.get("uni")
+
+    # database.insert_toilet(
+    #     coll,
+    #     locat,
+    #     quality,
+    #     [men, women, unisex],
+    #     facilities,
+    # )
+
     if int(facilities[0]) < 0 or int(facilities[1]) < 0:
 	    return redirect('/')
     return redirect('/')
@@ -41,8 +53,5 @@ if __name__ == "__main__":
         print("Pinged your deployment. You successfully connected to MongoDB!")
     except Exception as e:
         print(e)
-
-    db = client["Toilets"]
-    coll = db["toilets"]
 
     app.run(debug=True)
