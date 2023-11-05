@@ -27,6 +27,7 @@ def review_form():
 @app.route('/form.html')
 def form():
     return render_template('form.html')
+
 @app.route('/action_review', methods=['POST'])
 def action_review():
     locat = request.form.get("location")
@@ -39,6 +40,7 @@ def action_review():
     qual = int(qual)
     database.add_review(coll, splicedlocation, qual)
     return redirect('/')
+    
 @app.route('/action_add', methods=['POST'])
 def action_add():
     facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink")]
@@ -94,8 +96,8 @@ def action_add():
     
     return redirect('/')
 
-@app.route('/action_review', methods=['POST'])
-def action_review():
+@app.route('/action_route', methods=['POST'])
+def action_route():
     tid = request.form.get("tid")
     qual = int(request.form.get("quality"))
 
