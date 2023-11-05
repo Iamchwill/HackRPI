@@ -38,7 +38,6 @@
         </style>
     </head>
     <body>
-<<<<<<< HEAD
 <div class = container-fluid>
     <!-- Create a Bootstrap row to hold the map -->
     <div class="row">
@@ -70,126 +69,90 @@
       <div class="modal-body">
         <form action="/action_review" method="POST" onsubmit="return validateReview()">
             <div class="form-group">
-                <label for="locat">ID:</label>
+                <label for="locat">Location:</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="tid" name="tid" placeholder="Enter id">
-=======
-        <div class = container-fluid>
-            <!-- Create a Bootstrap row to hold the map -->
-            <div class="row">
-                <!-- Map column (takes up 9 out of 12 columns) -->
-                <div class="col-md-9">
-                    <div id="map"></div>
->>>>>>> bee0c2dc10c3cec3f78719833a534228207694da
-                </div>
-                <!-- Button column (takes up 3 out of 12 columns) -->
-                <div class="col-md-3">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Leave A Review</button>
-            
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Leave A Review</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form action="/action_review" method="POST" onsubmit="return validateReview()">
-                                <div class="form-group">
-                                    <label for="locat">Location:</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="locat" name="location" placeholder="Enter location">
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary btn-sm" id="useCurrentLocation">Use Current Location</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="qual">Quality:</label>
-                                    <input type="number" class="form-control" id="qual" name="quality" placeholder="Enter quality" min="1" max="5" step="0.5">
-                                </div>
-                                <div class="form-group">
-                                    <label for="review">Leave a review:</label>
-                                    <!-- Use a <textarea> for the review -->
-                                    <textarea class="form-control" id="review" name="review" rows="4" placeholder="Enter your review"></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                  </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-            </div>
-            <!-- Create a separate row for the button beneath the map -->
-            <div class="row">
-                <div id="button-container">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Submit A Location</button>
-            
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Submit A Location</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form action="/action_add" method="POST" onsubmit="return validateForm()">
-                            <div class="form-group">
-                                <label for="locat">Location:</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="locat" name="location" placeholder="Enter location">
-                                    <div class="input-group-append">
-                                        <button type="button" class="btn btn-primary btn-sm" id="useCurrentLocation">Use Current Location</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="qual">Quality:</label>
-                                <input type="number" class="form-control" id="qual" name="quality" placeholder="Enter quality" min="1" max="5" step="0.5">
-                            </div>
-                            <div class="form-group">
-                                <label for="toilets">Toilet Count:</label>
-                                <input type="number" class="form-control" id="toilets" name="toilets" placeholder="Toilet Count" min="1" max="100">
-                            </div>
-                            <div class="form-group">
-                                <label for="urinals">Urinal Count:</label>
-                                <input type="number" class="form-control" id="urinals" name="urinals" placeholder="Urinal Count" min="1" max="100">
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="sink" name="sink" value="sink">
-                                    <label class="form-check-label" for="sink">Sink Available?</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="men" name="men" value="True">
-                                    <label class="form-check-label" for="men">Men's</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="women" name="women" value="True">
-                                    <label class="form-check-label" for="women">Women's</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="uni" name="uni" value="True">
-                                    <label class="form-check-label" for="uni">Unisex</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
-                      </div>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-primary btn-sm" id="useCurrentLocation">Use Current Location</button>
                     </div>
                 </div>
             </div>
-            
-          
+            <div class="form-group">
+                <label for="qual">Quality:</label>
+                <input type="number" class="form-control" id="qual" name="quality" placeholder="Enter quality" min="1" max="5" step="0.5">
+            </div>
+            <div class="form-group">
+                <label for="review">Leave a review:</label>
+                <!-- Use a <textarea> for the review -->
+                <textarea class="form-control" id="review" name="review" rows="4" placeholder="Enter your review"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModal" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="formModalLabel">Submit A Location</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form action="/action_add" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="locat">Location:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="locat" name="location" placeholder="Enter location">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary btn-sm" id="useCurrentLocation">Use Current Location</button>
+                </div>
+            </div>
         </div>
+        <div class="form-group">
+            <label for="qual">Quality:</label>
+            <input type="number" class="form-control" id="qual" name="quality" placeholder="Enter quality" min="1" max="5" step="0.5">
         </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <div class="form-group">
+            <label for="toilets">Toilet Count:</label>
+            <input type="number" class="form-control" id="toilets" name="toilets" placeholder="Toilet Count" min="1" max="100">
+        </div>
+        <div class="form-group">
+            <label for="urinals">Urinal Count:</label>
+            <input type="number" class="form-control" id="urinals" name="urinals" placeholder="Urinal Count" min="1" max="100">
+        </div>
+        <div class="form-check form-check-inline">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="sink" name="sink" value="sink">
+                <label class="form-check-label" for="sink">Sink Available?</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="men" name="men" value="True">
+                <label class="form-check-label" for="men">Men's</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="women" name="women" value="True">
+                <label class="form-check-label" for="women">Women's</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="uni" name="uni" value="True">
+                <label class="form-check-label" for="uni">Unisex</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
     <script>
     var map = L.map('map');
 
