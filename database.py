@@ -8,7 +8,6 @@ def insert_toilet(collection, location, genders, facilities):
         'urinal': facilities[1],
         'sink': facilities[2],
         'soap': facilities[3],
-        'dryer': facilities[4],
     }
     collection.insert_one(new_toilet)
 
@@ -21,7 +20,6 @@ def edit_location(collection, tid, new_location, genders, facilities):
             'urinal': facilities[1],
             'sink': facilities[2],
             'soap': facilities[3],
-            'dryer': facilities[4],
         } 
     })
 
