@@ -14,6 +14,48 @@ function getCurrentLocation() {
     }
 }
 
+function validateForm() {
+    var locationInput = document.getElementById("locat");
+    if (locationInput.value.trim() === "") {
+        alert("Location is required.");
+        locationInput.focus();
+        return false;
+    }
+
+    var quality = document.getElementById("qual");
+    if (quality.value === "") {
+        alert("Value is required.");
+        quality.focus();
+        return false;
+    }
+    return true;
+}
+
+
+function validateReview() {
+    var locationInput = document.getElementById("locat");
+    if (locationInput.value.trim() === "") {
+        alert("Location is required.");
+        locationInput.focus();
+        return false;
+    }
+
+    var quality = document.getElementById("qual");
+    if (quality.value === "") {
+        alert("Value is required.");
+        quality.focus();
+        return false;
+    }
+
+    var review = document.getElementById("review");
+    if (review.value.trim() === "") {
+        alert("Review is required.");
+        review.focus();
+        return false;
+    }
+    return true;
+}
+
 // Add a click event listener to the "Use Current Location" button
 const useCurrentLocationButton = document.getElementById("useCurrentLocation");
 useCurrentLocationButton.addEventListener("click", getCurrentLocation);
