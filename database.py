@@ -1,8 +1,9 @@
-def insert_toilet(collection, location, facilities):
+def insert_toilet(collection, location, genders, facilities):
     new_toilet = {
         'location': location,
         'quality': 0.0,
         'reviews': 0,
+        'genders': genders,
         'toilet': facilities[0],
         'urinal': facilities[1],
         'sink': facilities[2],
@@ -11,10 +12,11 @@ def insert_toilet(collection, location, facilities):
     }
     collection.insert_one(new_toilet)
 
-def edit_location(collection, tid, new_location, facilities):
+def edit_location(collection, tid, new_location, genders, facilities):
     collection.update_one({'_id': tid},
         { "$set": { 
             'location': new_location,
+            'genders': genders,
             'toilet': facilities[0],
             'urinal': facilities[1],
             'sink': facilities[2],
