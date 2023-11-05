@@ -53,14 +53,32 @@ def action_add():
     if len(splicedlocation) != 2 or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[0]) == None or re.match(r'^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$', splicedlocation[1]) == None:
         return redirect('/')
     
-    print("good input")
-    #database.insert_toilet(
-    #    coll,
-    #    locat,
-    #    qual,
-    #    [men, women, unisex],
-    #    facilities,
-    #)
+    if men == None:
+        men = False
+    else:
+        men = True
+    if women == None:
+        women = False
+    else:
+        women = True
+    if unisex == None:
+        unisex = False
+    else:
+        unisex = True
+    if facilities[2] == None:
+        facilities[2] = False
+    else:
+        facilities[2] = True
+    facilities[0] = int(facilities[0])
+    facilities[1] = int(facilities[1])
+    qual = int(qual)
+    database.insert_toilet(
+        coll,
+        locat,
+        qual,
+        [men, women, unisex],
+        facilities,
+    )
 
     
     return redirect('/')
