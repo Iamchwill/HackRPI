@@ -12,13 +12,11 @@ app = Flask(__name__, static_url_path='',
             template_folder='templates')
 
 @app.route('/action_add', methods=['POST'])
-def action_add() {
+def action_add():
     facilities = [request.form.get(toilet), request.form.get(urinal), request.form.get(sink), request.form.get(soap)]
     locat = request.form.get(locat)
     if facilities[0] < 0 or facilities[1] < 0:
-	return redirect('/')
-
-}
+	    return redirect('/')
 
 @app.route('/')
 def hello_world():
