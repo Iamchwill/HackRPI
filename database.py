@@ -39,12 +39,12 @@ def edit_location(collection, tid, new_location, genders, facilities):
 
     
 def add_review(collection, tid, quality):
-    toilet = collection.find_one({'toiletid': tid})
+    toilet = collection.find_one({'toiletId': int(tid)})
     q = toilet['quality']
     r = toilet['reviews']
     toilet['quality'] = (q * r + quality) / (r + 1)
     toilet['reviews'] += 1
-    collection.replace_one({'toiletid': tid}, toilet)
+    collection.replace_one({'toiletId': tid}, toilet)
 
 
 def find_closest_toilet(collection, location):

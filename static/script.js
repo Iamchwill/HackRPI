@@ -33,12 +33,6 @@ function validateForm() {
 
 
 function validateReview() {
-    var locationInput = document.getElementById("locat");
-    if (locationInput.value.trim() === "") {
-        alert("Location is required.");
-        locationInput.focus();
-        return false;
-    }
 
     var quality = document.getElementById("qual");
     if (quality.value === "") {
