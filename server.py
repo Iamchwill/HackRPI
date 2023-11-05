@@ -45,6 +45,4 @@ if __name__ == "__main__":
     db = client["Toilets"]
     coll = db["toilets"]
 
-    print(database.dist([0,0],[3,4]))
-
     app.run(debug=True)
