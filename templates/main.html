@@ -209,7 +209,9 @@
                     var toilet = toilets[i]
                     var locat = [parseFloat(toilet.location[0]), parseFloat(toilet.location[1])]
                     let marker = new L.Marker(locat);
-                    marker.addTo(map);
+                    marker.addTo(map).on('click', function(e) {
+                        console.log(e.latlng);
+                    });
                 }
                 
                 if ("geolocation" in navigator) {
