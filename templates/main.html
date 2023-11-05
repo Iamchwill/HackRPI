@@ -48,24 +48,22 @@
         <!-- Button column (takes up 3 out of 12 columns) -->
         <div class="col-md-3">
             <div class="text-center mt-4">
-                <a href="./review_form.html" class="btn btn-primary">Review Form</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal" data-bs-whatever="@getbootstrap">Leave A Review</button>
             </div>
         </div>
     </div>
     <!-- Create a separate row for the button beneath the map -->
     <div class="row">
         <div id="button-container">
-            <a href="./form.html" class="btn btn-primary">Submit location info</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal" data-bs-whatever="@getbootstrap">Submit A Location</button>
         </div>
     </div>
     
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Leave A Review</button>
-    
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Leave A Review</h5>
+        <h5 class="modal-title" id="reviewModalLabel">Leave A Review</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -97,14 +95,12 @@
     </div>
   </div>
 </div>
-  
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Submit A Location</button>
     
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModal" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Submit A Location</h5>
+    <h5 class="modal-title" id="formModalLabel">Submit A Location</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
