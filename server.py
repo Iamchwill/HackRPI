@@ -36,9 +36,11 @@ def action_add():
     women = request.form.get("women")
     unisex = request.form.get("uni")
 
+    location = locat.split(",")
+
     database.insert_toilet(
         coll,
-        locat,
+        location,
         qual,
         [men, women, unisex],
         facilities,
