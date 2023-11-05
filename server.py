@@ -1,5 +1,6 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, jsonify, render_template, redirect, request
 from pymongo.mongo_client import MongoClient
+from bson.json_util import dumps
 
 import database
 
@@ -14,6 +15,10 @@ app = Flask(__name__, static_url_path='',
             static_folder='static',
             template_folder='templates')
 
+@app.route('/locations')
+def locations():
+    return dumps(list(coll.find({})))
+
 @app.route('/review_form.html')
 def review_form():
     return render_template('review_form.html')
@@ -21,6 +26,7 @@ def review_form():
 @app.route('/form.html')
 def form():
     return render_template('form.html')
+    
 @app.route('/action_add', methods=['POST'])
 def action_add():
     facilities = [request.form.get("toilets"), request.form.get("urinals"), request.form.get("sink")]
@@ -30,18 +36,24 @@ def action_add():
     women = request.form.get("women")
     unisex = request.form.get("uni")
 
-    # database.insert_toilet(
-    #     coll,
-    #     locat,
-    #     quality,
-    #     [men, women, unisex],
-    #     facilities,
-    # )
-
-    print(men)
+    database.insert_toilet(
+        coll,
+        locat,
+        quality,
+        [men, women, unisex],
+        facilities,
+    )
 
     if int(facilities[0]) < 0 or int(facilities[1]) < 0:
 	    return redirect('/')
+    return redirect('/')
+
+@app.route('/action_route', methods=['POST'])
+def action_route():
+    tid = request.form.get("tid")
+    qual = request.form.get("quality")
+
+    database.add_review(coll, tid, qual)
     return redirect('/')
 
 
