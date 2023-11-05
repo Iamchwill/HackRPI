@@ -23,31 +23,50 @@
       height: 85vh; /* 100% of the viewport height */
       width: 100%;    /* 100% of the viewport width */
     }
+    
+    /* Center the button */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 15vh; /* 15% of the viewport height */
+    }
   </style>
 </head>
 <body>
 
-<!-- Create a div element for the map and add padding to the left -->
+<!-- Create a Bootstrap row to hold the map -->
 <div class="row">
-    <div class="col-sm-8 pl-4"> <!-- Added the pl-4 class for left padding -->
-        <div id="map"></div>
-
-        <script>
-        // Initialize the map and set its view to a specific location and zoom level
-        var map = L.map('map').setView([51.505, -0.09], 13);
-
-        // Add OpenStreetMap tiles as a basemap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // You can add markers, polygons, or other layers to the map here.
-        </script>
+  <!-- Map column (takes up 9 out of 12 columns) -->
+  <div class="col-md-9">
+    <div id="map"></div>
+  </div>
+  <!-- Button column (takes up 3 out of 12 columns) -->
+  <div class="col-md-3">
+    <div class="text-center mt-4">
+      <a href="review_form.html" class="btn btn-primary">Review Form</a>
     </div>
-    <div id="button-container" class="pl-4"> <!-- Added the pl-4 class for left padding -->
-        <a href="form.html" class="btn btn-primary">Go to Form</a>
-    </div>
+  </div>
 </div>
+<!-- Create a separate row for the button beneath the map -->
+<div class="row">
+  <div id="button-container">
+    <a href="form.html" class="btn btn-primary">Submit location info</a>
+  </div>
+</div>
+
+<script>
+// Initialize the map and set its view to a specific location and zoom level
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+// Add OpenStreetMap tiles as a basemap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// You can add markers, polygons, or other layers to the map here.
+</script>
+
 </body>
 </html>
