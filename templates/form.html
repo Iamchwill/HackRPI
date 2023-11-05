@@ -13,7 +13,12 @@
                     <form action="/action_add" method="POST">
                         <div class="form-group">
                             <label for="locat">Location:</label>
-                            <input type="text" class="form-control" id="locat" name="location" placeholder="Enter location">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="locat" name="location" placeholder="Enter location">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-primary btn-sm" id="useCurrentLocation">Use Current Location</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="qual">Quality:</label>
@@ -34,15 +39,15 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="men" value="men">
-                                <label class="form-check-label" for="inlineCheckbox1">Men's</label>
+                                <label class="form-check-label" for="men">Men's</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="women" value="women">
-                                <label class="form-check-label" for="inlineCheckbox2">Women's</label>
+                                <label class="form-check-label" for="women">Women's</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="uni" value="uni">
-                                <label class="form-check-label" for="inlineCheckbox3">Unisex</label>
+                                <label class="form-check-label" for="uni">Unisex</label>
                             </div>
                         </div>
                     </form>
@@ -50,5 +55,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Function to update the location input with the current location
+        function updateLocationWithCurrentLocation() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const locationInput = document.getElementById("locat");
+                    locationInput.value = `${latitude}, ${longitude}`;
+                }, function (error) {
+                    console.error("Error getting current location:", error);
+                });
+            } else {
+                console.error("Geolocation not supported by the browser.");
+            }
+        }
+
+        // Add a click event listener to the "Use Current Location" button
+        const useCurrentLocationButton = document.getElementById("useCurrentLocation");
+        useCurrentLocationButton.addEventListener("click", updateLocationWithCurrentLocation);
+    </script>
 </body>
 </html>
